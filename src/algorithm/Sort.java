@@ -34,7 +34,15 @@ public class Sort {
         int [] list = array;
         //implement here
 
-
+        for (int i = 1; i <= array.length; i++) {
+            for (int j = i - 1; j > 0; j--) {
+                while (array[j] < array[j - 1]) {
+                    int temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+            }
+        }
 
         final long endTime = System.currentTimeMillis();
         final long executionTime = endTime - startTime;
@@ -55,21 +63,46 @@ public class Sort {
     }
     
 
-    public int [] mergeSort(int [] array){
-        int [] list = array;
-        //implement here
-        
-        
 
-        return list;
-    }
+        public int [] mergeSort(int [] array){
+            final long startTime = System.currentTimeMillis();
+            int [] list = array;
+//implement here
+            int size = list.length;
+            int mid = size / 2;
+            int leftSize = mid;
+            int rightSize = size - mid;
+            int[] left = new int[leftSize];
+            int[] right = new int[rightSize];
+
+            int[] temp=new int[left.length+right.length];
+            int i=0;
+            int j=0;
+            int h=0;
+            while(i<left.length && j<right.length){
+                if(j>right.length||(i<left.length &&left[i]<right[j])){
+                    temp[h++]=left[i++];
+
+                }
+                else
+                    temp[h++]=right[j++];
+            }
+
+            final long endTime = System.currentTimeMillis();
+            final long executionTime = endTime - startTime;
+            this.executionTime = executionTime;
+
+            return temp;
+        }
+
+
     
 
     public int [] quickSort(int [] array){
         int [] list = array;
         //implement here
-        
-        
+
+
 
         return list;
     }
@@ -77,8 +110,8 @@ public class Sort {
     public int [] heapSort(int [] array){
         int [] list = array;
         //implement here
-        
-        
+
+
 
         return list;
     }
